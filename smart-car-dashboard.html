@@ -829,25 +829,20 @@ function updateButtons() {
 // ==========================================
 
 function startEngine() {
-
-  if (!vehicleSafe()) {
-    updateButtons();
-    return;
-  }
-
-  client.publish(
-    TOPIC_STARTER,
-    "START",
-    { qos: 0 },
-    function(error) {
-
-      if (error) {
-        console.error("Gagal mengirim perintah starter:", error);
-      } else {
-        console.log("Perintah starter berhasil dikirim.");
-      }
-
+    if (!client || !client.connected) {
+        console.log("MQTT belum terhubung");
+        return;
     }
+
+    if (!vehicleSafe()) {
+        console.log("Kendaraan belum memenuhi syarat keamanan");
+        return;
+    }
+
+    client.publish(
+        "smartcar/v3/cmd/starter",
+        "START",
+        { qos: 1 }
   );
 
 }
@@ -857,31 +852,21 @@ function startEngine() {
 // ==========================================
 
 function setImmobilizer(command) {
-
-  if (!client || !client.connected) {
-    return;
-  }
-
-  if (command === "ON" && !vehicleSafe()) {
-    updateButtons();
-    return;
-  }
-
-  client.publish(
-    TOPIC_IMMOBILIZER,
-    command,
-    { qos: 0 },
-    function(error) {
-
-      if (error) {
-        console.error("Gagal mengirim immobilizer:", error);
-      } else {
-        console.log("Perintah immobilizer " + command + " berhasil dikirim.");
-      }
-
+    if (!client || !client.connected) {
+        console.log("MQTT belum terhubung");
+        return;
     }
-  );
 
+    if (command === "ON" && !vehicleSafe()) {
+        console.log("Kendaraan belum memenuhi syarat keamanan");
+        return;
+    }
+
+    client.publish(
+        "smartcar/v3/cmd/immobilizer",
+        command,
+        { qos: 1 }
+    );
 }
 
 // ==========================================
