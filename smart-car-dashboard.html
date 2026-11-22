@@ -15,13 +15,6 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #020b1b;
-    color: #e2e8f0;
-    padding: 15px;
-}
-
 :root {
     --blue: #00bfff;
     --blue2: #0284c7;
@@ -31,14 +24,20 @@ body {
     --red: #ef4444;
 }
 
+body {
+    font-family: Arial, sans-serif;
+    background: #020b1b;
+    color: #e2e8f0;
+    padding: 10px;
+}
+
 /* SPLASH SCREEN */
 
 #splash {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background:
-        radial-gradient(circle at center, #07345c, #020817 75%);
+    background: radial-gradient(circle at center, #07345c, #020817 75%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,6 +48,7 @@ body {
 #splash.hide {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .splash-content {
@@ -56,15 +56,14 @@ body {
 }
 
 .splash-icon {
-    font-size: 90px;
-    color: var(--blue);
-    margin-bottom: 25px;
+    font-size: 75px;
+    margin-bottom: 20px;
     text-shadow: 0 0 30px var(--blue);
 }
 
 .splash-content h1 {
     color: white;
-    font-size: clamp(25px, 5vw, 48px);
+    font-size: 30px;
     font-weight: 900;
     margin-bottom: 15px;
 }
@@ -76,34 +75,37 @@ body {
 .splash-content p {
     color: #93c5fd;
     line-height: 1.6;
+    font-size: 13px;
 }
 
 .loader {
-    width: 48px;
-    height: 48px;
+    width: 45px;
+    height: 45px;
     border: 5px solid #164e63;
     border-top-color: var(--blue);
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin: 35px auto 15px;
+    margin: 30px auto 15px;
 }
 
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
 
-/* DASHBOARD */
+/* CONTAINER */
 
 .container {
-    max-width: 1450px;
+    max-width: 700px;
     margin: auto;
 }
+
+/* HEADER */
 
 header {
     background: linear-gradient(110deg, #061a35, #0b2b50);
     border: 1px solid var(--border);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: 13px;
+    padding: 14px;
     margin-bottom: 15px;
     box-shadow: 0 0 15px #0284c722;
 }
@@ -113,66 +115,61 @@ header {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
 }
 
 .brand {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .brand-icon {
-    font-size: 42px;
-    color: var(--blue);
+    font-size: 30px;
 }
 
 .brand h1 {
-    font-size: clamp(18px, 3vw, 27px);
+    font-size: 16px;
     color: white;
 }
 
 .brand p {
-    font-size: 12px;
+    font-size: 10px;
     color: #7dd3fc;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 .mqtt-indicator {
-    font-size: 14px;
+    font-size: 11px;
     font-weight: bold;
-    color: var(--green);
+    color: var(--red);
 }
 
 .connection {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 13px;
 }
 
 .connection input {
-    flex: 1;
-    min-width: 180px;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-width: 0;
     background: #020b1b;
     border: 1px solid #164e63;
     color: white;
     border-radius: 7px;
-    padding: 11px;
+    padding: 12px;
 }
 
 button {
     border: none;
     border-radius: 8px;
-    padding: 11px 15px;
+    padding: 11px 10px;
     font-weight: bold;
     cursor: pointer;
     transition: .2s;
-}
-
-button:hover:not(:disabled) {
-    filter: brightness(1.2);
-    transform: translateY(-1px);
 }
 
 button:disabled {
@@ -191,44 +188,47 @@ button:disabled {
 }
 
 .message {
-    font-size: 12px;
+    font-size: 11px;
     color: #94a3b8;
     margin-top: 8px;
-    min-height: 15px;
+    min-height: 14px;
 }
 
 /* SECTION */
 
 .section-title {
     color: var(--blue);
-    font-size: 17px;
-    margin: 22px 0 12px;
+    font-size: 14px;
+    margin: 18px 0 10px;
     font-weight: bold;
     letter-spacing: .5px;
 }
 
+/* MONITORING */
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
 }
 
 .card, .panel {
     background: linear-gradient(145deg, #0b2545, #06152b);
     border: 1px solid #075985;
-    border-radius: 13px;
-    padding: 16px;
+    border-radius: 12px;
+    padding: 12px;
     box-shadow: 0 4px 15px #0005;
+    min-width: 0;
 }
 
 .card h3 {
     color: #93c5fd;
-    font-size: 12px;
-    margin-bottom: 12px;
+    font-size: 10px;
+    margin-bottom: 10px;
 }
 
 .value {
-    font-size: clamp(18px, 2.2vw, 26px);
+    font-size: 18px;
     font-weight: bold;
     color: white;
     overflow-wrap: anywhere;
@@ -236,27 +236,35 @@ button:disabled {
 
 .small-info {
     color: #94a3b8;
-    font-size: 11px;
+    font-size: 10px;
     margin-top: 8px;
+    line-height: 1.5;
 }
 
-/* GPS AND CAMERA 50:50 */
+/* GPS DAN KAMERA BERDAMPINGAN */
 
 .monitor-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 13px;
+    gap: 8px;
+    align-items: stretch;
+}
+
+.monitor-grid .panel {
+    padding: 9px;
+    min-width: 0;
 }
 
 .panel-title {
-    font-size: 16px;
+    font-size: 11px;
     color: white;
     font-weight: bold;
-    margin-bottom: 13px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 .panel-title span {
@@ -264,27 +272,50 @@ button:disabled {
 }
 
 .gps-coordinates {
-    margin-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 12px;
+    font-size: 10px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.gps-coordinates strong {
+    color: white;
+}
+
+/* PETA */
+
+.map-frame {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-top: 10px;
+    overflow: hidden;
+    border-radius: 9px;
+    border: 1px solid #164e63;
+    background: #020817;
+}
+
+.map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 .map-button {
     background: #0284c7;
     color: white;
     text-decoration: none;
-    padding: 9px 13px;
+    padding: 8px 5px;
     border-radius: 7px;
-    display: inline-block;
+    display: block;
+    text-align: center;
+    font-size: 10px;
+    margin-top: 9px;
 }
+
+/* KAMERA */
 
 .camera-frame {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     background: #020817;
     border: 1px solid #164e63;
     border-radius: 9px;
@@ -304,51 +335,53 @@ button:disabled {
 .camera-placeholder {
     text-align: center;
     color: #64748b;
-    font-size: 13px;
-    padding: 20px;
+    font-size: 11px;
+    padding: 10px;
+    line-height: 1.5;
 }
 
 .live-indicator {
     color: var(--green);
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .camera-controls {
     display: flex;
-    gap: 8px;
-    margin-top: 10px;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 8px;
 }
 
 .camera-controls button {
-    flex: 1;
     background: #075985;
     color: white;
-    font-size: 12px;
+    font-size: 10px;
+    padding: 8px 3px;
 }
 
-/* CONTROL */
+/* KONTROL */
 
 .control-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
 
 .control-card {
     background: linear-gradient(145deg, #0b2545, #06152b);
     border: 1px solid #075985;
-    border-radius: 13px;
-    padding: 18px;
+    border-radius: 12px;
+    padding: 14px;
 }
 
 .control-card h3 {
-    font-size: 15px;
+    font-size: 13px;
     margin-bottom: 12px;
 }
 
 .control-status {
-    font-size: 13px;
-    margin-bottom: 15px;
+    font-size: 12px;
+    margin-bottom: 12px;
     color: #facc15;
     font-weight: bold;
 }
@@ -357,18 +390,21 @@ button:disabled {
     background: #00b94f;
     color: white;
     width: 100%;
+    min-height: 44px;
 }
 
 .btn-red {
     background: #dc2626;
     color: white;
     flex: 1;
+    min-height: 44px;
 }
 
 .btn-blue {
     background: #0284c7;
     color: white;
     flex: 1;
+    min-height: 44px;
 }
 
 .button-group {
@@ -376,93 +412,63 @@ button:disabled {
     gap: 8px;
 }
 
-/* DEVICE STATUS */
+/* STATUS PERANGKAT */
 
 .status-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.status-grid .card:last-child {
+    grid-column: 1 / -1;
 }
 
 .status-value {
-    font-size: 19px;
+    font-size: 16px;
     font-weight: bold;
     margin-top: 8px;
 }
 
-.green {
-    color: var(--green);
-}
-
-.blue {
-    color: var(--blue);
-}
-
 .info-box {
-    margin-top: 15px;
-    padding: 16px;
+    margin-top: 13px;
+    padding: 13px;
     background: #071b35;
     border: 1px solid #075985;
     border-radius: 12px;
     color: #bfdbfe;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 1.8;
 }
 
 footer {
     text-align: center;
     color: #64748b;
-    font-size: 11px;
+    font-size: 10px;
     padding: 20px 5px;
 }
 
-/* RESPONSIVE */
+/* LAYAR SANGAT KECIL */
 
-@media(max-width: 800px) {
-    .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
+@media (max-width: 350px) {
     .monitor-grid {
-        grid-template-columns: 1fr;
+        gap: 5px;
     }
 
-    .control-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media(max-width: 500px) {
-    body {
-        padding: 8px;
+    .monitor-grid .panel {
+        padding: 6px;
     }
 
-    header {
-        padding: 14px;
+    .panel-title {
+        font-size: 9px;
     }
 
-    .brand-icon {
-        font-size: 30px;
+    .gps-coordinates {
+        font-size: 9px;
     }
 
-    .grid {
-        gap: 8px;
-    }
-
-    .card {
-        padding: 12px;
-    }
-
-    .status-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .button-group {
-        flex-direction: row;
-    }
-
-    .section-title {
-        font-size: 15px;
+    .camera-controls button {
+        font-size: 9px;
     }
 }
 </style>
@@ -470,7 +476,7 @@ footer {
 
 <body>
 
-<!-- HALAMAN PEMBUKA -->
+<!-- SPLASH SCREEN -->
 
 <div id="splash">
     <div class="splash-content">
@@ -491,8 +497,8 @@ footer {
         <div class="brand">
             <div class="brand-icon">🚘</div>
             <div>
-                <h1>SMART CAR SECURITY SYSTEM V3</h1>
-                <p>Monitoring • Tracking • Security</p>
+                <h1>DASHBOARD KENDARAAN</h1>
+                <p>Smart Car Security System V3</p>
             </div>
         </div>
 
@@ -509,7 +515,8 @@ footer {
             autocomplete="off"
         >
 
-        <button class="btn-connect" id="connectButton" onclick="connectMQTT()">
+        <button class="btn-connect" id="connectButton"
+            onclick="connectMQTT()">
             HUBUNGKAN
         </button>
 
@@ -531,13 +538,17 @@ footer {
     <div class="card">
         <h3>🌡️ SUHU KABIN</h3>
         <div class="value" id="temperature">-- °C</div>
-        <div class="small-info" id="temperatureStatus">Menunggu sensor</div>
+        <div class="small-info" id="temperatureStatus">
+            Menunggu sensor
+        </div>
     </div>
 
     <div class="card">
         <h3>💺 BEBAN JOK</h3>
         <div class="value" id="seatLoad">--</div>
-        <div class="small-info" id="seatStatus">Menunggu sensor</div>
+        <div class="small-info" id="seatStatus">
+            Menunggu sensor
+        </div>
     </div>
 
     <div class="card">
@@ -549,7 +560,9 @@ footer {
     <div class="card">
         <h3>📍 STATUS GPS</h3>
         <div class="value" id="gpsStatus">--</div>
-        <div class="small-info" id="satellites">Satelit: --</div>
+        <div class="small-info" id="satellites">
+            Satelit: --
+        </div>
     </div>
 
 </div>
@@ -560,44 +573,60 @@ footer {
 
 <div class="monitor-grid">
 
-    <!-- GPS -->
+    <!-- GPS TRACKING -->
 
     <div class="panel">
+
         <div class="panel-title">
             <span>📍 GPS TRACKING</span>
-            <span>LIVE GPS</span>
+            <span id="mapStatus">MENUNGGU GPS</span>
         </div>
 
         <div class="gps-coordinates">
-            <div>
-                <p>Latitude</p>
-                <strong id="latitude">--</strong>
-                <br><br>
-                <p>Longitude</p>
-                <strong id="longitude">--</strong>
-            </div>
+            <p>Latitude</p>
+            <strong id="latitude">--</strong>
 
-            <a id="mapsLink" href="#" target="_blank"
-                rel="noopener" class="map-button">
-                📍 BUKA MAPS
-            </a>
+            <p style="margin-top:5px;">Longitude</p>
+            <strong id="longitude">--</strong>
+        </div>
+
+        <div class="map-frame">
+            <iframe
+                id="googleMap"
+                src="about:blank"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+            </iframe>
         </div>
 
         <div class="small-info" id="locationInfo">
-            Menunggu koordinat GPS...
+            Menunggu koordinat GPS kendaraan...
         </div>
+
+        <a id="mapsLink"
+            href="#"
+            target="_blank"
+            rel="noopener"
+            class="map-button">
+            📍 BUKA MAPS
+        </a>
+
     </div>
 
-    <!-- CAMERA -->
+    <!-- KAMERA -->
 
     <div class="panel" id="cameraPanel">
 
         <div class="panel-title">
-            <span>📷 MONITOR KAMERA</span>
-            <span class="live-indicator" id="cameraStatus">● OFFLINE</span>
+            <span>📷 KAMERA</span>
+            <span class="live-indicator" id="cameraStatus">
+                ● OFFLINE
+            </span>
         </div>
 
         <div class="camera-frame">
+
             <img
                 id="cameraStream"
                 alt="Live Camera ESP32-CAM"
@@ -608,44 +637,56 @@ footer {
                 📷<br><br>
                 KAMERA BELUM TERHUBUNG
             </div>
+
         </div>
 
         <div class="camera-controls">
-            <button onclick="takePhoto()">📸 AMBIL FOTO</button>
-            <button onclick="fullscreenCamera()">⛶ LAYAR PENUH</button>
+            <button onclick="takePhoto()">
+                📸 AMBIL FOTO
+            </button>
+
+            <button onclick="fullscreenCamera()">
+                ⛶ LAYAR PENUH
+            </button>
         </div>
 
         <div class="small-info">
-            ESP32-CAM AI Thinker • Live MJPEG
+            ESP32-CAM AI Thinker
         </div>
+
     </div>
 
 </div>
 
-<!-- KONTROL -->
+<!-- KONTROL KEAMANAN -->
 
 <h2 class="section-title">KONTROL KEAMANAN KENDARAAN</h2>
 
 <div class="control-grid">
 
     <div class="control-card">
+
         <h3>⚡ RELAY 1 - STARTER</h3>
 
         <div class="control-status" id="starterStatus">
             STATUS: TIDAK AKTIF
         </div>
 
-        <button class="btn-green" id="starterButton"
-            onclick="startEngine()" disabled>
+        <button class="btn-green"
+            id="starterButton"
+            onclick="startEngine()"
+            disabled>
             ▶ AKTIFKAN STARTER
         </button>
 
         <div class="small-info">
             Sistem pulsa selama 1 detik.
         </div>
+
     </div>
 
     <div class="control-card">
+
         <h3>🛡️ RELAY 2 - IMMOBILIZER</h3>
 
         <div class="control-status" id="immobilizerStatus">
@@ -653,16 +694,23 @@ footer {
         </div>
 
         <div class="button-group">
-            <button class="btn-red" id="immobilizerOnButton"
-                onclick="setImmobilizer('ON')" disabled>
+
+            <button class="btn-red"
+                id="immobilizerOnButton"
+                onclick="setImmobilizer('ON')"
+                disabled>
                 🔒 AKTIFKAN
             </button>
 
-            <button class="btn-blue" id="immobilizerOffButton"
-                onclick="setImmobilizer('OFF')" disabled>
+            <button class="btn-blue"
+                id="immobilizerOffButton"
+                onclick="setImmobilizer('OFF')"
+                disabled>
                 🔓 NONAKTIFKAN
             </button>
+
         </div>
+
     </div>
 
 </div>
@@ -675,17 +723,23 @@ footer {
 
     <div class="card">
         <h3>KONEKSI MQTT</h3>
-        <div class="status-value" id="mqttDeviceStatus">OFFLINE</div>
+        <div class="status-value" id="mqttDeviceStatus">
+            OFFLINE
+        </div>
     </div>
 
     <div class="card">
         <h3>DATA TELEMETRI</h3>
-        <div class="status-value" id="telemetryStatus">MENUNGGU</div>
+        <div class="status-value" id="telemetryStatus">
+            MENUNGGU
+        </div>
     </div>
 
     <div class="card">
         <h3>KEAMANAN GPS</h3>
-        <div class="status-value" id="safetyStatus">BELUM SIAP</div>
+        <div class="status-value" id="safetyStatus">
+            BELUM SIAP
+        </div>
     </div>
 
 </div>
@@ -725,13 +779,12 @@ const TOPIC_IMMOBILIZER = "smartcar/v3/cmd/immobilizer";
 // KONFIGURASI KAMERA
 // ==========================================
 
-// Sesuaikan IP dengan IP ESP32-CAM yang aktif.
-
 const CAMERA_STREAM_URL = "http://172.20.10.3/mjpeg/1";
 const CAMERA_CAPTURE_URL = "http://172.20.10.3/capture";
 
 let client = null;
 let latestData = null;
+let lastMapCoordinates = null;
 
 const el = id => document.getElementById(id);
 
@@ -740,9 +793,11 @@ const el = id => document.getElementById(id);
 // ==========================================
 
 window.addEventListener("load", function() {
+
     setTimeout(function() {
         el("splash").classList.add("hide");
     }, 3000);
+
 });
 
 // ==========================================
@@ -754,28 +809,37 @@ function connectCamera() {
     const camera = el("cameraStream");
 
     camera.onload = function() {
+
         camera.style.display = "block";
         el("cameraPlaceholder").style.display = "none";
         el("cameraStatus").textContent = "● LIVE";
+
     };
 
     camera.onerror = function() {
+
         camera.style.display = "none";
         el("cameraPlaceholder").style.display = "block";
+
         el("cameraPlaceholder").innerHTML =
             "📷<br><br>KAMERA TIDAK TERHUBUNG";
+
         el("cameraStatus").textContent = "● OFFLINE";
+
     };
 
     camera.src = CAMERA_STREAM_URL;
+
 }
 
 function takePhoto() {
 
     const link = document.createElement("a");
+
     link.href = CAMERA_CAPTURE_URL;
     link.target = "_blank";
     link.rel = "noopener";
+
     link.click();
 
 }
@@ -805,9 +869,12 @@ function connectMQTT() {
     const password = el("mqttPassword").value.trim();
 
     if (!password) {
+
         el("connectionMessage").textContent =
             "Masukkan password MQTT terlebih dahulu.";
+
         return;
+
     }
 
     el("connectionMessage").textContent =
@@ -816,14 +883,18 @@ function connectMQTT() {
     el("connectButton").disabled = true;
 
     client = mqtt.connect(MQTT_HOST, {
+
         username: MQTT_USERNAME,
         password: password,
+
         clientId: "smartcar_dashboard_" +
             Math.random().toString(16).substring(2, 10),
+
         clean: true,
         connectTimeout: 10000,
         reconnectPeriod: 3000,
         keepalive: 60
+
     });
 
     client.on("connect", function() {
@@ -849,16 +920,22 @@ function connectMQTT() {
             const data = JSON.parse(message.toString());
 
             if (topic === TOPIC_TELEMETRY) {
+
                 latestData = data;
                 updateDashboard(data);
+
             }
 
             if (topic === TOPIC_STATUS) {
+
                 updateDeviceStatus(data);
+
             }
 
         } catch (error) {
+
             console.error("Data MQTT tidak valid:", error);
+
         }
 
     });
@@ -875,8 +952,10 @@ function connectMQTT() {
     });
 
     client.on("reconnect", function() {
+
         el("connectionMessage").textContent =
             "Menghubungkan ulang MQTT...";
+
     });
 
     client.on("offline", function() {
@@ -889,7 +968,9 @@ function connectMQTT() {
     });
 
     client.on("close", function() {
+
         updateConnection(false);
+
     });
 
 }
@@ -901,8 +982,10 @@ function connectMQTT() {
 function disconnectMQTT() {
 
     if (client) {
+
         client.end(true);
         client = null;
+
     }
 
     updateConnection(false);
@@ -921,7 +1004,9 @@ function disconnectMQTT() {
 function updateConnection(connected) {
 
     el("connectionText").textContent =
-        connected ? "● MQTT TERHUBUNG" : "● MQTT BELUM TERHUBUNG";
+        connected ?
+        "● MQTT TERHUBUNG" :
+        "● MQTT BELUM TERHUBUNG";
 
     el("connectionText").style.color =
         connected ? "#00e676" : "#ef4444";
@@ -958,6 +1043,7 @@ function updateDashboard(data) {
     } else {
 
         el("temperature").textContent = "-- °C";
+
         el("temperatureStatus").textContent =
             "Data suhu belum tersedia";
 
@@ -968,52 +1054,86 @@ function updateDashboard(data) {
     if (data.seatLoad === 1) {
 
         el("seatLoad").textContent = "ADA BEBAN";
+
         el("seatStatus").textContent =
             "Beban terdeteksi pada jok";
 
     } else if (data.seatLoad === 0) {
 
         el("seatLoad").textContent = "KOSONG";
+
         el("seatStatus").textContent =
             "Tidak ada beban pada jok";
 
     } else {
 
         el("seatLoad").textContent = "--";
+
         el("seatStatus").textContent =
             "Menunggu data sensor";
 
     }
 
-    // GPS
+    // GPS DAN GOOGLE MAPS
 
-    if (data.gpsValid === true) {
+    const lat = Number(data.latitude);
+    const lon = Number(data.longitude);
+
+    const validCoordinates =
+        Number.isFinite(lat) &&
+        Number.isFinite(lon) &&
+        Math.abs(lat) <= 90 &&
+        Math.abs(lon) <= 180;
+
+    if (data.gpsValid === true && validCoordinates) {
 
         el("gpsStatus").textContent = "VALID";
 
-        el("latitude").textContent =
-            Number(data.latitude).toFixed(6);
-
-        el("longitude").textContent =
-            Number(data.longitude).toFixed(6);
+        el("latitude").textContent = lat.toFixed(6);
+        el("longitude").textContent = lon.toFixed(6);
 
         el("locationInfo").textContent =
-            "Koordinat GPS berhasil diterima.";
+            "Lokasi kendaraan berhasil diperbarui.";
 
         el("mapsLink").href =
             "https://www.google.com/maps?q=" +
-            data.latitude + "," + data.longitude;
+            lat + "," + lon;
+
+        el("mapStatus").textContent = "● LIVE GPS";
+        el("mapStatus").style.color = "#00e676";
+
+        // Perbarui peta jika koordinat berubah
+
+        const mapKey = lat.toFixed(5) + "," + lon.toFixed(5);
+
+        if (mapKey !== lastMapCoordinates) {
+
+            el("googleMap").src =
+                "https://www.google.com/maps?q=" +
+                lat + "," + lon + "&z=16&output=embed";
+
+            lastMapCoordinates = mapKey;
+
+        }
 
     } else {
 
         el("gpsStatus").textContent = "BELUM FIX";
+
         el("latitude").textContent = "--";
         el("longitude").textContent = "--";
 
         el("locationInfo").textContent =
             "GPS belum mendapatkan koordinat valid.";
 
+        el("googleMap").src = "about:blank";
+
         el("mapsLink").href = "#";
+
+        el("mapStatus").textContent = "MENUNGGU GPS";
+        el("mapStatus").style.color = "#facc15";
+
+        lastMapCoordinates = null;
 
     }
 
@@ -1030,19 +1150,22 @@ function updateDashboard(data) {
 
     el("speed").textContent =
         Number.isFinite(speed) ?
-        speed.toFixed(2) + " km/jam" : "-- km/jam";
+        speed.toFixed(2) + " km/jam" :
+        "-- km/jam";
 
     // STARTER
 
     el("starterStatus").textContent =
         data.starter === true ?
-        "STATUS: AKTIF" : "STATUS: TIDAK AKTIF";
+        "STATUS: AKTIF" :
+        "STATUS: TIDAK AKTIF";
 
     // IMMOBILIZER
 
     el("immobilizerStatus").textContent =
         data.immobilizer === true ?
-        "STATUS: AKTIF" : "STATUS: TIDAK AKTIF";
+        "STATUS: AKTIF" :
+        "STATUS: TIDAK AKTIF";
 
     el("telemetryStatus").textContent = "DITERIMA";
 
@@ -1058,7 +1181,9 @@ function updateDashboard(data) {
 function updateDeviceStatus(data) {
 
     if (typeof data === "string") {
+
         el("mqttDeviceStatus").textContent = data;
+
     }
 
 }
@@ -1109,7 +1234,9 @@ function updateButtons() {
     const safe = vehicleSafe();
 
     el("starterButton").disabled = !safe;
+
     el("immobilizerOnButton").disabled = !safe;
+
     el("immobilizerOffButton").disabled = !connected;
 
 }
