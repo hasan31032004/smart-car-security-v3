@@ -158,6 +158,24 @@ footer {
   margin-top: 30px;
   font-size: 12px;
 }
+
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .value {
+    font-size: 23px;
+  }
+}
 </style>
 </head>
 
@@ -227,6 +245,7 @@ footer {
     <h3>RELAY 1 - STARTER</h3>
     <div class="value" id="starterStatus">OFF</div>
     <div class="small">Aktivasi starter selama 1 detik</div>
+
     <button id="starterButton" class="btn-green"
       onclick="startEngine()" disabled>
       AKTIFKAN STARTER
@@ -237,10 +256,12 @@ footer {
     <h3>RELAY 2 - IMMOBILIZER</h3>
     <div class="value" id="immobilizerStatus">OFF</div>
     <div class="small">Kontrol sistem immobilizer</div>
+
     <button id="immobilizerOn" class="btn-red"
       onclick="setImmobilizer('ON')" disabled>
       AKTIFKAN IMMOBILIZER
     </button>
+
     <button id="immobilizerOff" class="btn-gray"
       onclick="setImmobilizer('OFF')" disabled>
       NONAKTIFKAN IMMOBILIZER
@@ -260,7 +281,7 @@ footer {
 <div class="info">
   <b>Informasi sistem:</b><br>
   Dashboard menerima data melalui MQTT WebSocket EMQX.
-  Kontrol starter dan immobilizer hanya diizinkan ketika
+  Kontrol starter dan immobilizer ON hanya diizinkan ketika
   GPS valid dan kecepatan kendaraan maksimal 2 km/jam.
   Jangan mengaktifkan pemutus mesin ketika kendaraan berjalan.
 </div>
@@ -498,7 +519,7 @@ function updateDashboard(data) {
   document.getElementById("speed").textContent =
     Number(data.speed || 0).toFixed(2) + " km/jam";
 
-  // RELAY
+  // STATUS RELAY
 
   document.getElementById("starterStatus").textContent =
     data.starter ? "ON" : "OFF";
@@ -548,6 +569,7 @@ function vehicleSafe() {
 function updateButtons() {
 
   const connected = client.connected;
+
   const safe = connected &&
     latestData &&
     latestData.gpsValid === true &&
@@ -566,18 +588,12 @@ function updateButtons() {
 
 // =====================================
 // KONTROL STARTER
+// TANPA POP-UP KONFIRMASI
 // =====================================
 
 function startEngine() {
 
   if (!vehicleSafe()) return;
-
-  const confirmAction = confirm(
-    "Pastikan kendaraan berhenti dan kondisi aman.\n\n" +
-    "Kirim perintah STARTER?"
-  );
-
-  if (!confirmAction) return;
 
   client.publish(
     TOPIC_STARTER,
@@ -588,7 +604,7 @@ function startEngine() {
       if (error) {
         alert("Gagal mengirim perintah starter.");
       } else {
-        alert("Perintah starter berhasil dikirim.");
+        console.log("Perintah STARTER berhasil dikirim.");
       }
 
     }
@@ -598,6 +614,7 @@ function startEngine() {
 
 // =====================================
 // KONTROL IMMOBILIZER
+// TANPA POP-UP KONFIRMASI
 // =====================================
 
 function setImmobilizer(command) {
@@ -611,23 +628,6 @@ function setImmobilizer(command) {
 
     if (!vehicleSafe()) return;
 
-    const confirmAction = confirm(
-      "Pastikan kendaraan benar-benar berhenti.\n\n" +
-      "Aktifkan immobilizer?"
-    );
-
-    if (!confirmAction) return;
-
-  }
-
-  if (command === "OFF") {
-
-    const confirmAction = confirm(
-      "Nonaktifkan immobilizer?"
-    );
-
-    if (!confirmAction) return;
-
   }
 
   client.publish(
@@ -639,7 +639,7 @@ function setImmobilizer(command) {
       if (error) {
         alert("Gagal mengirim perintah.");
       } else {
-        alert("Perintah " + command + " berhasil dikirim.");
+        console.log("Perintah IMMOBILIZER " + command + " berhasil dikirim.");
       }
 
     }
@@ -648,7 +648,7 @@ function setImmobilizer(command) {
 }
 
 // =====================================
-// PERIKSA DATA STALE
+// PERIKSA KONEKSI
 // =====================================
 
 setInterval(function() {
