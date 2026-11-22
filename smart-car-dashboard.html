@@ -13,12 +13,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #0b1120;
-  color: #e5e7eb;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
   padding: 20px;
 }
 
@@ -28,168 +28,265 @@ body {
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 25px;
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #334155;
 }
 
-h1 {
-  font-size: 24px;
+header h1 {
+  font-size: 25px;
+  margin-bottom: 8px;
   color: #38bdf8;
 }
 
-.subtitle {
+header p {
   color: #94a3b8;
   font-size: 13px;
-  margin-top: 6px;
 }
 
-.status {
-  padding: 9px 14px;
-  border-radius: 20px;
-  background: #374151;
-  font-size: 12px;
+.connection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  align-items: center;
 }
 
-.online {
-  background: #064e3b;
-  color: #6ee7b7;
+.connection input {
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #475569;
+  background: #0f172a;
+  color: white;
+  outline: none;
 }
 
-.offline {
-  background: #7f1d1d;
-  color: #fecaca;
+button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-connect {
+  background: #0284c7;
+  color: white;
+}
+
+.btn-disconnect {
+  background: #475569;
+  color: white;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.dot.connected {
+  background: #22c55e;
 }
 
 .section-title {
-  margin: 25px 0 12px;
-  font-size: 16px;
+  font-size: 18px;
+  margin: 25px 0 14px;
   color: #38bdf8;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
 }
 
 .card {
-  background: #172033;
-  border: 1px solid #263449;
-  border-radius: 14px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
   padding: 20px;
 }
 
 .card h3 {
-  font-size: 13px;
+  font-size: 14px;
   color: #94a3b8;
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .value {
-  font-size: 27px;
+  font-size: 25px;
   font-weight: bold;
+  color: white;
+  overflow-wrap: anywhere;
 }
 
-.small {
+.unit {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.small-info {
   color: #94a3b8;
   font-size: 12px;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
-.green { color: #4ade80; }
-.red { color: #f87171; }
-.yellow { color: #facc15; }
-.blue { color: #38bdf8; }
-
-button {
-  border: none;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 12px;
-  width: 100%;
+.control-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 22px;
 }
 
-button:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+.control-card h3 {
+  margin-bottom: 10px;
+}
+
+.control-card p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-bottom: 16px;
 }
 
 .btn-green {
   background: #16a34a;
   color: white;
+  width: 100%;
 }
 
 .btn-red {
   background: #dc2626;
   color: white;
+  width: 100%;
 }
 
-.btn-gray {
-  background: #475569;
+.btn-blue {
+  background: #0284c7;
   color: white;
+  width: 100%;
 }
 
-.map-link {
+.control-status {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #facc15;
+  font-weight: bold;
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.map-button {
   display: inline-block;
-  margin-top: 15px;
-  color: #38bdf8;
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #0284c7;
+  color: white;
   text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
 }
 
-.info {
-  margin-top: 20px;
-  padding: 15px;
+.info-box {
+  background: #172554;
+  border: 1px solid #1d4ed8;
   border-radius: 10px;
-  background: #172033;
+  padding: 15px;
+  margin-top: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #bfdbfe;
+}
+
+.message {
+  font-size: 13px;
+  margin-top: 12px;
   color: #94a3b8;
-  font-size: 12px;
-  line-height: 1.7;
+  min-height: 18px;
 }
 
 footer {
   text-align: center;
   color: #64748b;
-  margin-top: 30px;
   font-size: 12px;
+  margin-top: 30px;
+  padding: 15px;
 }
 
-@media (max-width: 480px) {
+@media(max-width: 600px) {
   body {
     padding: 12px;
   }
 
-  h1 {
+  header h1 {
     font-size: 20px;
   }
 
-  .card {
-    padding: 16px;
+  .value {
+    font-size: 22px;
   }
 
-  .value {
-    font-size: 23px;
+  .button-group {
+    grid-template-columns: 1fr;
   }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
 <header>
-  <div>
-    <h1>SMART CAR SECURITY SYSTEM V3</h1>
-    <div class="subtitle">IoT Vehicle Monitoring & Security Dashboard</div>
+  <h1>SMART CAR SECURITY SYSTEM V3</h1>
+  <p>Monitoring dan Pengendalian Keamanan Kendaraan Berbasis IoT</p>
+
+  <div class="connection">
+    <input
+      type="password"
+      id="mqttPassword"
+      placeholder="Masukkan password MQTT EMQX"
+      autocomplete="off"
+    >
+
+    <button class="btn-connect" id="connectButton" onclick="connectMQTT()">
+      HUBUNGKAN
+    </button>
+
+    <button class="btn-disconnect" id="disconnectButton" onclick="disconnectMQTT()" disabled>
+      PUTUSKAN
+    </button>
   </div>
-  <div>
-    <span id="mqttStatus" class="status offline">MQTT DISCONNECTED</span>
+
+  <div class="status-bar">
+    <span class="dot" id="connectionDot"></span>
+    <span id="connectionText">MQTT BELUM TERHUBUNG</span>
   </div>
+
+  <div class="message" id="connectionMessage"></div>
 </header>
 
 <h2 class="section-title">MONITORING KENDARAAN</h2>
@@ -198,363 +295,492 @@ footer {
 
   <div class="card">
     <h3>SUHU KABIN</h3>
-    <div class="value blue" id="temperature">-- °C</div>
-    <div class="small" id="temperatureStatus">Menunggu data sensor</div>
+    <div class="value" id="temperature">-- <span class="unit">°C</span></div>
+    <div class="small-info" id="temperatureStatus">Menunggu data sensor</div>
   </div>
 
   <div class="card">
     <h3>BEBAN JOK</h3>
     <div class="value" id="seatLoad">--</div>
-    <div class="small" id="seatStatus">Menunggu data sensor</div>
+    <div class="small-info" id="seatStatus">Menunggu data sensor</div>
+  </div>
+
+  <div class="card">
+    <h3>KECEPATAN KENDARAAN</h3>
+    <div class="value" id="speed">-- <span class="unit">km/jam</span></div>
+    <div class="small-info">Data dari GPS NEO-6M</div>
   </div>
 
   <div class="card">
     <h3>STATUS GPS</h3>
-    <div class="value yellow" id="gpsStatus">BELUM FIX</div>
-    <div class="small" id="satellites">Satelit: 0</div>
-  </div>
-
-  <div class="card">
-    <h3>KECEPATAN</h3>
-    <div class="value blue" id="speed">0.00 km/jam</div>
-    <div class="small">Kecepatan kendaraan</div>
+    <div class="value" id="gpsStatus">--</div>
+    <div class="small-info" id="satellites">Satelit: --</div>
   </div>
 
 </div>
 
 <h2 class="section-title">GPS TRACKING</h2>
 
-<div class="card">
-  <h3>KOORDINAT KENDARAAN</h3>
-  <div class="small">Latitude</div>
-  <div class="value" id="latitude">0.000000</div>
-
-  <div class="small">Longitude</div>
-  <div class="value" id="longitude">0.000000</div>
-
-  <a id="mapLink" class="map-link" href="#" target="_blank">
-    Buka Lokasi di Google Maps
-  </a>
-</div>
-
-<h2 class="section-title">KONTROL KEAMANAN</h2>
-
 <div class="grid">
 
   <div class="card">
-    <h3>RELAY 1 - STARTER</h3>
-    <div class="value" id="starterStatus">OFF</div>
-    <div class="small">Aktivasi starter selama 1 detik</div>
-
-    <button id="starterButton" class="btn-green"
-      onclick="startEngine()" disabled>
-      AKTIFKAN STARTER
-    </button>
+    <h3>GARIS LINTANG (LATITUDE)</h3>
+    <div class="value" id="latitude" style="font-size:19px;">--</div>
   </div>
 
   <div class="card">
+    <h3>GARIS BUJUR (LONGITUDE)</h3>
+    <div class="value" id="longitude" style="font-size:19px;">--</div>
+  </div>
+
+</div>
+
+<div class="card" style="margin-top:15px;">
+  <h3>LOKASI KENDARAAN</h3>
+  <div id="locationInfo" class="small-info">Menunggu koordinat GPS...</div>
+  <a
+    id="mapsLink"
+    class="map-button"
+    href="#"
+    target="_blank"
+    rel="noopener"
+    style="display:none;"
+  >
+    BUKA GOOGLE MAPS
+  </a>
+</div>
+
+<h2 class="section-title">KONTROL KEAMANAN KENDARAAN</h2>
+
+<div class="grid">
+
+  <div class="control-card">
+    <h3>RELAY 1 - STARTER</h3>
+    <p>Kontrol starter kendaraan melalui koneksi MQTT.</p>
+
+    <div class="control-status" id="starterStatus">
+      STATUS: TIDAK AKTIF
+    </div>
+
+    <button
+      class="btn-green"
+      id="starterButton"
+      onclick="startEngine()"
+      disabled
+    >
+      AKTIFKAN STARTER
+    </button>
+
+    <div class="small-info">
+      Starter bekerja dengan sistem pulsa selama 1 detik.
+    </div>
+  </div>
+
+  <div class="control-card">
     <h3>RELAY 2 - IMMOBILIZER</h3>
-    <div class="value" id="immobilizerStatus">OFF</div>
-    <div class="small">Kontrol sistem immobilizer</div>
+    <p>Kontrol sistem pengaman kendaraan melalui MQTT.</p>
 
-    <button id="immobilizerOn" class="btn-red"
-      onclick="setImmobilizer('ON')" disabled>
-      AKTIFKAN IMMOBILIZER
-    </button>
+    <div class="control-status" id="immobilizerStatus">
+      STATUS: TIDAK AKTIF
+    </div>
 
-    <button id="immobilizerOff" class="btn-gray"
-      onclick="setImmobilizer('OFF')" disabled>
-      NONAKTIFKAN IMMOBILIZER
-    </button>
+    <div class="button-group">
+      <button
+        class="btn-red"
+        id="immobilizerOnButton"
+        onclick="setImmobilizer('ON')"
+        disabled
+      >
+        AKTIFKAN
+      </button>
+
+      <button
+        class="btn-blue"
+        id="immobilizerOffButton"
+        onclick="setImmobilizer('OFF')"
+        disabled
+      >
+        NONAKTIFKAN
+      </button>
+    </div>
   </div>
 
 </div>
 
 <h2 class="section-title">STATUS PERANGKAT</h2>
 
-<div class="card">
-  <div class="small">Koneksi ESP32</div>
-  <div class="value" id="deviceStatus">MENUNGGU</div>
-  <div class="small" id="lastUpdate">Belum ada data diterima</div>
+<div class="grid">
+
+  <div class="card">
+    <h3>KONEKSI MQTT</h3>
+    <div class="value" id="mqttDeviceStatus">OFFLINE</div>
+  </div>
+
+  <div class="card">
+    <h3>DATA TELEMETRI</h3>
+    <div class="value" id="telemetryStatus">MENUNGGU</div>
+  </div>
+
+  <div class="card">
+    <h3>KEAMANAN GPS</h3>
+    <div class="value" id="safetyStatus">BELUM SIAP</div>
+  </div>
+
 </div>
 
-<div class="info">
-  <b>Informasi sistem:</b><br>
-  Dashboard menerima data melalui MQTT WebSocket EMQX.
-  Kontrol starter dan immobilizer ON hanya diizinkan ketika
-  GPS valid dan kecepatan kendaraan maksimal 2 km/jam.
-  Jangan mengaktifkan pemutus mesin ketika kendaraan berjalan.
+<div class="info-box">
+  <strong>Informasi Sistem:</strong><br>
+  1. Starter dan Immobilizer ON hanya dapat diperintah ketika GPS valid dan kecepatan kendaraan maksimal 2 km/jam.<br>
+  2. Immobilizer OFF dapat diperintah selama koneksi MQTT aktif.<br>
+  3. Sistem tidak mengizinkan perintah pengaktifan immobilizer ketika kendaraan sedang berjalan.<br>
+  4. Pastikan sistem kelistrikan dan rangkaian relay terpasang dengan benar.
 </div>
 
 <footer>
-  SMART CAR SECURITY SYSTEM V3<br>
-  ESP32 • GPS NEO-6M • DHT11 • FSR402 • EMQX MQTT
+  SMART CAR SECURITY SYSTEM V3 | IoT Vehicle Security
 </footer>
 
 </div>
 
 <script>
 
-// =====================================
-// KONFIGURASI EMQX
-// =====================================
+// ==========================================
+// KONFIGURASI MQTT EMQX
+// ==========================================
 
-const BROKER = "wss://jddd0c0f.ala.asia-southeast1.emqxsl.com:8084/mqtt";
+const MQTT_HOST =
+"wss://jddd0c0f.ala.asia-southeast1.emqxsl.com:8084/mqtt";
 
 const MQTT_USERNAME = "smartcar_esp32";
-const MQTT_PASSWORD = prompt("MASUKKAN_PASSWORD:");
 
 const TOPIC_TELEMETRY = "smartcar/v3/telemetry";
 const TOPIC_STATUS = "smartcar/v3/status";
 const TOPIC_STARTER = "smartcar/v3/cmd/starter";
 const TOPIC_IMMOBILIZER = "smartcar/v3/cmd/immobilizer";
 
+let client = null;
 let latestData = null;
-let deviceOnline = false;
 
-// =====================================
+// ==========================================
+// ELEMEN DASHBOARD
+// ==========================================
+
+const el = id => document.getElementById(id);
+
+// ==========================================
 // KONEKSI MQTT
-// =====================================
+// ==========================================
 
-const client = mqtt.connect(BROKER, {
-  username: MQTT_USERNAME,
-  password: MQTT_PASSWORD,
-  clientId: "smartcar_web_" + Math.random().toString(16).slice(2),
-  clean: true,
-  connectTimeout: 10000,
-  reconnectPeriod: 3000,
-  keepalive: 30
-});
+function connectMQTT() {
 
-client.on("connect", function() {
+  if (client && client.connected) return;
 
-  console.log("MQTT BERHASIL TERHUBUNG");
+  const password = el("mqttPassword").value.trim();
 
-  document.getElementById("mqttStatus").textContent =
-    "MQTT CONNECTED";
+  if (!password) {
+    el("connectionMessage").textContent =
+      "Masukkan password MQTT terlebih dahulu.";
+    return;
+  }
 
-  document.getElementById("mqttStatus").className =
-    "status online";
+  el("connectionMessage").textContent =
+    "Sedang menghubungkan ke server MQTT...";
 
-  client.subscribe([
-    TOPIC_TELEMETRY,
-    TOPIC_STATUS
-  ], function(error) {
-    if (error) {
-      console.error("Subscribe gagal:", error);
-    } else {
-      console.log("Berhasil subscribe topic");
-    }
+  el("connectButton").disabled = true;
+
+  client = mqtt.connect(MQTT_HOST, {
+    username: MQTT_USERNAME,
+    password: password,
+    clientId: "smartcar_dashboard_" +
+      Math.random().toString(16).substring(2, 10),
+    clean: true,
+    connectTimeout: 10000,
+    reconnectPeriod: 3000,
+    keepalive: 60
   });
 
-});
+  client.on("connect", function() {
 
-client.on("reconnect", function() {
-  console.log("Mencoba menghubungkan ulang MQTT...");
-});
+    updateConnection(true);
 
-client.on("offline", function() {
-  setOffline();
-});
+    el("connectionMessage").textContent =
+      "Koneksi MQTT berhasil.";
 
-client.on("close", function() {
-  setOffline();
-});
+    client.subscribe(
+      [TOPIC_TELEMETRY, TOPIC_STATUS],
+      { qos: 0 },
+      function(error) {
+        if (error) {
+          el("connectionMessage").textContent =
+            "Gagal berlangganan topik MQTT.";
+        }
+      }
+    );
 
-client.on("error", function(error) {
-  console.error("MQTT ERROR:", error);
-  setOffline();
-});
+    updateButtons();
 
-function setOffline() {
+  });
 
-  document.getElementById("mqttStatus").textContent =
-    "MQTT DISCONNECTED";
+  client.on("message", function(topic, message) {
 
-  document.getElementById("mqttStatus").className =
-    "status offline";
+    try {
 
-  document.getElementById("deviceStatus").textContent =
-    "OFFLINE";
+      const data = JSON.parse(message.toString());
 
-  deviceOnline = false;
+      if (topic === TOPIC_TELEMETRY) {
+        latestData = data;
+        updateDashboard(data);
+      }
+
+      if (topic === TOPIC_STATUS) {
+        updateDeviceStatus(data);
+      }
+
+    } catch (error) {
+      console.error("Data MQTT tidak valid:", error);
+    }
+
+  });
+
+  client.on("error", function(error) {
+
+    console.error("MQTT error:", error);
+
+    el("connectionMessage").textContent =
+      "Terjadi masalah koneksi MQTT.";
+
+    updateButtons();
+
+  });
+
+  client.on("reconnect", function() {
+
+    el("connectionMessage").textContent =
+      "Mencoba menghubungkan ulang...";
+
+  });
+
+  client.on("offline", function() {
+
+    updateConnection(false);
+
+    el("connectionMessage").textContent =
+      "Koneksi MQTT terputus.";
+
+  });
+
+  client.on("close", function() {
+
+    updateConnection(false);
+
+  });
+
+}
+
+// ==========================================
+// PUTUSKAN MQTT
+// ==========================================
+
+function disconnectMQTT() {
+
+  if (client) {
+    client.end(true);
+    client = null;
+  }
+
+  updateConnection(false);
+
+  el("connectionMessage").textContent =
+    "Koneksi MQTT diputuskan.";
+
   updateButtons();
 
 }
 
-// =====================================
-// MENERIMA DATA MQTT
-// =====================================
+// ==========================================
+// STATUS KONEKSI
+// ==========================================
 
-client.on("message", function(topic, message) {
+function updateConnection(connected) {
 
-  const payload = message.toString();
+  el("connectionDot").classList.toggle(
+    "connected",
+    connected
+  );
 
-  console.log("TOPIC:", topic);
-  console.log("DATA:", payload);
+  el("connectionText").textContent =
+    connected ? "MQTT TERHUBUNG" : "MQTT BELUM TERHUBUNG";
 
-  if (topic === TOPIC_TELEMETRY) {
+  el("mqttDeviceStatus").textContent =
+    connected ? "ONLINE" : "OFFLINE";
 
-    try {
+  el("connectButton").disabled = connected;
+  el("disconnectButton").disabled = !connected;
 
-      const data = JSON.parse(payload);
+  updateButtons();
 
-      latestData = data;
-      deviceOnline = true;
+}
 
-      updateDashboard(data);
-
-    } catch(error) {
-
-      console.error("JSON tidak valid:", error);
-
-    }
-
-  }
-
-  if (topic === TOPIC_STATUS) {
-
-    const status = payload.trim().replace(/^["']|["']$/g, "");
-
-    if (status === "ONLINE") {
-      deviceOnline = true;
-      document.getElementById("deviceStatus").textContent =
-        "ONLINE";
-    }
-
-  }
-
-});
-
-// =====================================
-// UPDATE DASHBOARD
-// =====================================
+// ==========================================
+// UPDATE DASHBOARD TELEMETRI
+// ==========================================
 
 function updateDashboard(data) {
 
-  document.getElementById("deviceStatus").textContent =
-    "ONLINE";
+  // SUHU DHT11
 
-  document.getElementById("lastUpdate").textContent =
-    "Update terakhir: " + new Date().toLocaleTimeString("id-ID");
+  if (data.temperatureValid === true) {
 
-  // SUHU
+    el("temperature").innerHTML =
+      Number(data.temperature).toFixed(1) +
+      ' <span class="unit">°C</span>';
 
-  if (data.temperatureValid) {
-
-    document.getElementById("temperature").textContent =
-      Number(data.temperature).toFixed(1) + " °C";
-
-    document.getElementById("temperatureStatus").textContent =
+    el("temperatureStatus").textContent =
       "Sensor DHT11 aktif";
 
   } else {
 
-    document.getElementById("temperature").textContent =
-      "-- °C";
+    el("temperature").innerHTML =
+      '-- <span class="unit">°C</span>';
 
-    document.getElementById("temperatureStatus").textContent =
-      "Sensor tidak terbaca";
+    el("temperatureStatus").textContent =
+      "Data suhu belum tersedia";
 
   }
 
-  // SENSOR JOK
+  // FSR402 - BEBAN JOK
 
-  const seat = Number(data.seatLoad) === 1;
+  if (data.seatLoad === 1) {
 
-  document.getElementById("seatLoad").textContent =
-    seat ? "ADA BEBAN" : "KOSONG";
+    el("seatLoad").textContent = "ADA BEBAN";
+    el("seatStatus").textContent =
+      "Beban terdeteksi pada jok";
 
-  document.getElementById("seatLoad").className =
-    seat ? "value green" : "value yellow";
+  } else if (data.seatLoad === 0) {
 
-  document.getElementById("seatStatus").textContent =
-    "FSR Raw: " + data.fsrRaw;
-
-  // GPS
-
-  if (data.gpsValid) {
-
-    document.getElementById("gpsStatus").textContent =
-      "GPS FIX";
-
-    document.getElementById("gpsStatus").className =
-      "value green";
-
-    document.getElementById("latitude").textContent =
-      Number(data.latitude).toFixed(6);
-
-    document.getElementById("longitude").textContent =
-      Number(data.longitude).toFixed(6);
-
-    const lat = Number(data.latitude);
-    const lon = Number(data.longitude);
-
-    document.getElementById("mapLink").href =
-      "https://www.google.com/maps?q=" + lat + "," + lon;
+    el("seatLoad").textContent = "KOSONG";
+    el("seatStatus").textContent =
+      "Tidak ada beban pada jok";
 
   } else {
 
-    document.getElementById("gpsStatus").textContent =
-      "BELUM FIX";
-
-    document.getElementById("gpsStatus").className =
-      "value yellow";
-
-    document.getElementById("latitude").textContent =
-      "Belum tersedia";
-
-    document.getElementById("longitude").textContent =
-      "Belum tersedia";
-
-    document.getElementById("mapLink").href = "#";
+    el("seatLoad").textContent = "--";
+    el("seatStatus").textContent =
+      "Data sensor belum tersedia";
 
   }
 
-  document.getElementById("satellites").textContent =
-    "Satelit: " + (data.satellites ?? 0);
+  // GPS
 
-  // SPEED
+  if (data.gpsValid === true) {
 
-  document.getElementById("speed").textContent =
-    Number(data.speed || 0).toFixed(2) + " km/jam";
+    el("gpsStatus").textContent = "VALID";
 
-  // STATUS RELAY
+    el("latitude").textContent =
+      Number(data.latitude).toFixed(6);
 
-  document.getElementById("starterStatus").textContent =
-    data.starter ? "ON" : "OFF";
+    el("longitude").textContent =
+      Number(data.longitude).toFixed(6);
 
-  document.getElementById("starterStatus").className =
-    data.starter ? "value green" : "value red";
+    el("locationInfo").textContent =
+      "Koordinat GPS berhasil diterima.";
 
-  document.getElementById("immobilizerStatus").textContent =
-    data.immobilizer ? "ON" : "OFF";
+    const mapUrl =
+      "https://www.google.com/maps?q=" +
+      data.latitude + "," + data.longitude;
 
-  document.getElementById("immobilizerStatus").className =
-    data.immobilizer ? "value red" : "value green";
+    el("mapsLink").href = mapUrl;
+    el("mapsLink").style.display = "inline-block";
 
+  } else {
+
+    el("gpsStatus").textContent = "BELUM FIX";
+    el("latitude").textContent = "--";
+    el("longitude").textContent = "--";
+
+    el("locationInfo").textContent =
+      "GPS belum mendapatkan koordinat valid.";
+
+    el("mapsLink").style.display = "none";
+
+  }
+
+  // SATELIT
+
+  el("satellites").textContent =
+    "Satelit: " +
+    (data.satellites !== undefined ? data.satellites : "--");
+
+  // KECEPATAN
+
+  const speed = Number(data.speed);
+
+  el("speed").innerHTML =
+    (Number.isFinite(speed) ? speed.toFixed(2) : "--") +
+    ' <span class="unit">km/jam</span>';
+
+  // STATUS STARTER
+
+  if (data.starter === true) {
+    el("starterStatus").textContent =
+      "STATUS: AKTIF";
+  } else {
+    el("starterStatus").textContent =
+      "STATUS: TIDAK AKTIF";
+  }
+
+  // STATUS IMMOBILIZER
+
+  if (data.immobilizer === true) {
+    el("immobilizerStatus").textContent =
+      "STATUS: AKTIF";
+  } else {
+    el("immobilizerStatus").textContent =
+      "STATUS: TIDAK AKTIF";
+  }
+
+  // STATUS TELEMETRI
+
+  el("telemetryStatus").textContent = "DITERIMA";
+
+  updateSafetyStatus();
   updateButtons();
 
 }
 
-// =====================================
-// VALIDASI KENDARAAN BERHENTI
-// =====================================
+// ==========================================
+// STATUS PERANGKAT
+// ==========================================
+
+function updateDeviceStatus(data) {
+
+  if (typeof data === "string") {
+    el("mqttDeviceStatus").textContent = data;
+  }
+
+}
+
+// ==========================================
+// VALIDASI KEAMANAN KENDARAAN
+// ==========================================
 
 function vehicleSafe() {
 
-  if (!client.connected || !latestData) {
-    alert("Dashboard belum menerima data ESP32.");
+  if (!client || !client.connected) {
+    return false;
+  }
+
+  if (!latestData) {
     return false;
   }
 
   if (latestData.gpsValid !== true) {
-    alert("GPS belum mendapatkan posisi valid.");
     return false;
   }
 
-  if (Number(latestData.speed) > 2) {
-    alert("Perintah ditolak. Kendaraan harus berhenti.");
+  const speed = Number(latestData.speed);
+
+  if (!Number.isFinite(speed) || speed > 2) {
     return false;
   }
 
@@ -562,38 +788,52 @@ function vehicleSafe() {
 
 }
 
-// =====================================
-// STATUS TOMBOL
-// =====================================
+// ==========================================
+// STATUS KEAMANAN GPS
+// ==========================================
 
-function updateButtons() {
+function updateSafetyStatus() {
 
-  const connected = client.connected;
+  if (vehicleSafe()) {
 
-  const safe = connected &&
-    latestData &&
-    latestData.gpsValid === true &&
-    Number(latestData.speed) <= 2;
+    el("safetyStatus").textContent = "SIAP";
 
-  document.getElementById("starterButton").disabled =
-    !safe;
+  } else {
 
-  document.getElementById("immobilizerOn").disabled =
-    !safe;
+    el("safetyStatus").textContent = "BELUM SIAP";
 
-  document.getElementById("immobilizerOff").disabled =
-    !connected;
+  }
 
 }
 
-// =====================================
+// ==========================================
+// AKTIF / NONAKTIF TOMBOL
+// ==========================================
+
+function updateButtons() {
+
+  const connected = client && client.connected;
+
+  const safe = vehicleSafe();
+
+  el("starterButton").disabled = !safe;
+
+  el("immobilizerOnButton").disabled = !safe;
+
+  el("immobilizerOffButton").disabled = !connected;
+
+}
+
+// ==========================================
 // KONTROL STARTER
-// TANPA POP-UP KONFIRMASI
-// =====================================
+// ==========================================
 
 function startEngine() {
 
-  if (!vehicleSafe()) return;
+  if (!vehicleSafe()) {
+    updateButtons();
+    return;
+  }
 
   client.publish(
     TOPIC_STARTER,
@@ -602,9 +842,9 @@ function startEngine() {
     function(error) {
 
       if (error) {
-        alert("Gagal mengirim perintah starter.");
+        console.error("Gagal mengirim perintah starter:", error);
       } else {
-        console.log("Perintah STARTER berhasil dikirim.");
+        console.log("Perintah starter berhasil dikirim.");
       }
 
     }
@@ -612,22 +852,19 @@ function startEngine() {
 
 }
 
-// =====================================
+// ==========================================
 // KONTROL IMMOBILIZER
-// TANPA POP-UP KONFIRMASI
-// =====================================
+// ==========================================
 
 function setImmobilizer(command) {
 
-  if (!client.connected) {
-    alert("MQTT belum terhubung.");
+  if (!client || !client.connected) {
     return;
   }
 
-  if (command === "ON") {
-
-    if (!vehicleSafe()) return;
-
+  if (command === "ON" && !vehicleSafe()) {
+    updateButtons();
+    return;
   }
 
   client.publish(
@@ -637,9 +874,9 @@ function setImmobilizer(command) {
     function(error) {
 
       if (error) {
-        alert("Gagal mengirim perintah.");
+        console.error("Gagal mengirim immobilizer:", error);
       } else {
-        console.log("Perintah IMMOBILIZER " + command + " berhasil dikirim.");
+        console.log("Perintah immobilizer " + command + " berhasil dikirim.");
       }
 
     }
@@ -647,19 +884,14 @@ function setImmobilizer(command) {
 
 }
 
-// =====================================
-// PERIKSA KONEKSI
-// =====================================
+// ==========================================
+// PEMBARUAN TOMBOL SECARA BERKALA
+// ==========================================
 
 setInterval(function() {
-
-  if (!client.connected) {
-    setOffline();
-  }
-
   updateButtons();
-
-}, 2000);
+  updateSafetyStatus();
+}, 1000);
 
 </script>
 
